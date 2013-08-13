@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>包含字符串</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link type="text/css" href="" rel="stylesheet">
+    <script type="text/javascript" src="../jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var ndString1 = $('#string1'),
+                ndString2 = $('#string2'),
+                ndButton = $('#button');
+
+            function testString() {
+                if ((ndString1.val()).indexOf(ndString2.val()) != -1) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+
+            ndButton.click(function() {
+                $(this).next().remove();
+                if (testString()) {
+                    $('body').append('<p>' + ndString1.val() + '包含' + ndString2.val() + '</p>');
+                } else {
+                    $('body').append('<p>' + ndString1.val() + '不包含' + ndString2.val() + '</p>');
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>
+        <label for="string1">字符串1：</label>
+        <input type="text" id="string1">
+    </p>
+    <p>
+        <label for="string2">字符串2：</label>
+        <input type="text" id="string2">
+    </p>
+    <input type="button" id="button" value="测试"/>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>移动元素消失</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link type="text/css" href="" rel="stylesheet">
+    <style type="text/css">
+        #block {
+            position: relative;
+            top: 0;
+            width: 200px;
+            height: 200px;
+            background-color: #CCCCCC;
+        }
+    </style>
+    <script type="text/javascript" src="../jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var ndBlock = $('#block');
+
+            ndBlock.animate({'top': '200px', 'opacity': 0}, 20000);
+        
+        });
+    </script>
+</head>
+<body>
+   <div id="block">
+       * 选择器选取文档中的每个单独的元素，包括 html、head 和 body。
+        如果与其他元素（嵌套选择器，正如上面的例子）一起使用，该选择器选取指定元素中的所有子元素。
+   </div>
+</body>
+</html>

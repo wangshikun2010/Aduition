@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>验证url和email</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link type="text/css" href="" rel="stylesheet">
+    <script type="text/javascript" src="../jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            var ndEmail = $('#email'),
+                ndUrl = $('#url'),
+                emailReg = /^[a-z]([a-z0-9]*[-_]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i,
+                urlReg = /^(((ht|f)tp(s?))\:\/\/)?(www.|[a-zA-Z].)[a-zA-Z0-9\-\.]+\.(com|edu|gov|mil|net|org|biz|info|name|museum|us|ca|uk)(\:[0-9]+)*(\/($|[a-zA-Z0-9\.\,\;\?\'\\\+&amp;%\$#\=~_\-]+))*$/;
+
+            function isEmail(email) {
+                if (!emailReg.test(email.val())) {
+                    email.after('<span>请输入正确的email</span>');
+                }
+            }
+
+            function isUrl(url) {
+                if (!urlReg.test(url.val())) {
+                    url.after('<span>请输入正确的url</span>');
+                }
+            }
+
+            ndEmail.bind('blur keyup',function() {
+                $(this).next('span').remove();
+                isEmail($(this));
+            });
+
+            ndUrl.bind('blur keyup',function() {
+                $(this).next('span').remove();
+                isUrl($(this));
+            });
+        });
+    </script>
+</head>
+<body>
+    <p>
+        <label for="email">邮箱：</label>
+        <input type="text" name="email" id="email"/>
+    </p>
+    <p>
+        <label for="url">网址：</label>
+        <input type="text" name="url" id="url"/>
+    </p>
+</body>
+</html>

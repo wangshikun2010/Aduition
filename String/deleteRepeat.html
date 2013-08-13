@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>删除数组重复元素</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link type="text/css" href="" rel="stylesheet">
+    <script type="text/javascript" src=""></script>
+</head>
+<script type="text/javascript">
+
+    // 删除数组重复元素
+    function deleteRepeat(ary) {
+        var newAry = [];
+
+        for (var i = 0; i < ary.length; i++) {
+            if (newAry.indexOf(ary[i]) == -1) {
+                newAry.push(ary[i]);
+            }
+        }
+
+        return newAry;
+    }
+
+    // 删除字符串开头结尾的空格
+    function deledeSpance(str) {
+        return str.replace(/(^\s*)|(\s*$)/g, '');
+    }
+
+    // 截取字符串
+    function subStr(str, start, length) {
+        return str.substr(start, length);
+    }
+
+    // 获取字符串出现的最多的字符和出现次数
+    function getStrInfo(str) {
+        var strAry = str.split('');
+        var newo = {};
+        for (var i = 0; i < strAry.length; i++) {
+            count = 0;
+
+            // console.log(newo.hasOwnProperty(strAry[i]));
+            if (newo.hasOwnProperty(strAry[i])) {
+                console.log(newo[strAry[i]]);
+                newo[strAry[i]]++;
+            } else {
+                newo[strAry[i]] = 1;
+            }
+        }
+        console.log(newo);
+
+        var max = 0, name;
+        for (var k in newo) {
+            if (newo[k] > max) {
+                max = newo[k];
+                name = k;
+            }
+        }
+        console.log(name + ':' + max);
+    }
+
+    // 获取字符串字节长度
+    function getStrByteLength(str) {
+        var bytelen = 0;
+        for (var i=0; i<str.length; i++) {
+            if (str.charCodeAt(i) > 255) {
+                bytelen += 2;
+            } else {
+                bytelen += 1;
+            }
+        }
+
+        return bytelen;
+    }
+
+    window.onload = function() {
+        console.log(deleteRepeat([1,5,47,51,51,1,47,5,'5', 54, '1']));
+        console.log('  jfsjkfskf  '.trim());
+        console.log(deledeSpance('  jfsjkfskf  '));
+        console.log(subStr('abcdefg', 4, 3));
+        getStrInfo('abcdefddg');
+        console.log(getStrByteLength('abcdefddg甘家口噶噶及噶'));
+    }
+</script>
+<body>
+    
+</body>
+</html>
